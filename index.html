@@ -27,22 +27,22 @@
             <div class="form-group">
               <label class="form">hours</label>
               <input class="form-control" type="textfield"
-              ng-model="time.hours"/>
+              ng-model="time.hours" placeholder="0"/>
             </div>
             <div class="form-group">
               <label class="form">minutes</label>
               <input class="form-control" type="textfield"
-              ng-model="time.minutes"/>
+              ng-model="time.minutes" placeholder="0"/>
             </div>
             <div class="form-group">
               <label class="form">seconds</label>
               <input class="form-control" type="textfield"
-              ng-model="time.seconds"/>
+              ng-model="time.seconds" placeholder="0"/>
             </div>
             <div class="form-group">
               <button type="button"
               class="btn btn-danger btn-round"
-              ng-click="timeCtrl.removeTime($index)">
+              ng-click="timeCtrl.removeTime($index)" ng-hide="{{$index === 0}}">
                 <span class="glyphicon glyphicon-minus"></span>
               </button>
             </div>
