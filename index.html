@@ -15,35 +15,40 @@
       </div>
     </div>
     <div class="container">
-      <div class="main">
+      <div class="main" ng-controller="TimeController as timeCtrl">
         <div class="input-times">
           <h3 class="heading">Times</h3>
         </div>
-        <form class="form-inline">
-          <div class="input-time">
+        <form class="form-inline" ng-submit="timeCtrl.addTimes()">
+          <div class="input-time" ng-repeat="time in timeCtrl.times">
             <div class="form-group">
-              <h5><strong>Time #1:</strong></h5>
+              <h5><strong>{{"Time #" + ($index + 1)}}:</strong></h5>
             </div>
             <div class="form-group">
               <label class="form">hours</label>
-              <input class="form-control" type="textfield"/>
+              <input class="form-control" type="textfield"
+              ng-model="time.hours"/>
             </div>
             <div class="form-group">
               <label class="form">minutes</label>
-              <input class="form-control" type="textfield"/>
+              <input class="form-control" type="textfield"
+              ng-model="time.minutes"/>
             </div>
             <div class="form-group">
               <label class="form">seconds</label>
-              <input class="form-control" type="textfield"/>
+              <input class="form-control" type="textfield"
+              ng-model="time.seconds"/>
             </div>
             <div class="form-group">
               <button type="button"
-              class="btn btn-danger btn-round">
+              class="btn btn-danger btn-round"
+              ng-click="timeCtrl.removeTime($index)">
                 <span class="glyphicon glyphicon-minus"></span>
               </button>
             </div>
           </div>
-          <button type="button" class="btn btn-success">
+          <button type="button" class="btn btn-success"
+          ng-click="timeCtrl.insertTime()">
             <span class="glyphicon glyphicon-plus"> Add More Times<span>
           </button>
           <button type="submit" class="btn btn-default">Add-Up Times</button>
@@ -53,7 +58,7 @@
         <div class="results">
           <h3 class="heading">Result</h3>
           <p class="text-center lead">
-            0 hours, 0 minutes, 0 seconds
+            {{timeCtrl.result}}
           </p>
         </div>
       </div>
